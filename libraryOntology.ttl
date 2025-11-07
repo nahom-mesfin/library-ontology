@@ -1,0 +1,133 @@
+@prefix : <https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#> .
+@prefix lib: <https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl> a owl:Ontology ;
+    rdfs:label "Library / Book Management Ontology - Nahom Mesfin" ;
+    rdfs:comment "Ontology URI should match the URL where you publish this file." .
+
+# CLASSES
+:Resource a owl:Class ; rdfs:label "Resource" .
+:Person a owl:Class ; rdfs:label "Person" .
+:Member a owl:Class ; rdfs:subClassOf :Person ; rdfs:label "Member" .
+:Librarian a owl:Class ; rdfs:subClassOf :Person ; rdfs:label "Librarian" .
+:Author a owl:Class ; rdfs:subClassOf :Person ; rdfs:label "Author" .
+:Book a owl:Class ; rdfs:label "Book" .
+:Ebook a owl:Class ; rdfs:subClassOf :Book ; rdfs:label "Ebook" .
+:PrintedBook a owl:Class ; rdfs:subClassOf :Book ; rdfs:label "Printed Book" .
+:Copy a owl:Class ; rdfs:label "Copy" .
+:Publisher a owl:Class ; rdfs:label "Publisher" .
+:Genre a owl:Class ; rdfs:label "Genre" .
+:LibraryBranch a owl:Class ; rdfs:label "Library Branch" .
+:Loan a owl:Class ; rdfs:label "Loan" .
+:Reservation a owl:Class ; rdfs:label "Reservation" .
+:ISBN a owl:Class ; rdfs:label "ISBN" .
+:Series a owl:Class ; rdfs:label "Series" .
+:Edition a owl:Class ; rdfs:label "Edition" .
+:Review a owl:Class ; rdfs:label "Review" .
+:Language a owl:Class ; rdfs:label "Language" .
+:Format a owl:Class ; rdfs:label "Format" .
+:StaffRole a owl:Class ; rdfs:label "Staff Role" .
+:EmailNode a owl:Class ; rdfs:label "Email Node" .
+
+# ENUMERATION
+:BookCondition a owl:Class ; rdfs:label "Book Condition" .
+:New a :BookCondition ; rdfs:label "New" .
+:Good a :BookCondition ; rdfs:label "Good" .
+:Fair a :BookCondition ; rdfs:label "Fair" .
+:Poor a :BookCondition ; rdfs:label "Poor" .
+
+:BookConditionEnum a owl:Class ;
+    owl:oneOf ( :New :Good :Fair :Poor ) ;
+    rdfs:label "Enumeration of book condition values" .
+
+# UNION: ContentItem = Book OR Ebook OR Review
+:ContentItem a owl:Class ;
+    owl:unionOf ( :Book :Ebook :Review ) ;
+    rdfs:label "Union of Book, Ebook, Review" .
+
+# INTERSECTION: ActiveMember = Member AND hasOutstandingLoan some Loan
+:ActiveMember a owl:Class ;
+    owl:intersectionOf ( :Member
+        [ a owl:Restriction ;
+          owl:onProperty :hasOutstandingLoan ;
+          owl:someValuesFrom :Loan
+        ]
+    ) ;
+    rdfs:label "Member who currently has at least one outstanding loan" .
+
+# COMPLEMENT: NonMember = Person but not a Member
+:NonMember a owl:Class ;
+    owl:complementOf :Member ;
+    rdfs:label "Person who is not a library member" .
+
+# CARDINALITY RESTRICTION: SingleISBNBook = Book with exactly 1 hasISBN ISBN
+:SingleISBNBook a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:intersectionOf ( :Book
+            [ a owl:Restriction ;
+              owl:onProperty :hasISBN ;
+              owl:cardinality "1"^^xsd:nonNegativeInteger ;
+              owl:allValuesFrom :ISBN
+            ]
+        )
+    ] ;
+    rdfs:label "Book with exactly one ISBN (cardinality restriction)" .
+
+# OBJECT PROPERTIES
+
+
+:authoredBy a owl:ObjectProperty ; rdfs:domain :Book ; rdfs:range :Author ; rdfs:label "authored by" .
+
+:hasCopy a owl:ObjectProperty ; rdfs:domain :Book ; rdfs:range :Copy ; rdfs:label "has copy" .
+
+:locatedAt a owl:ObjectProperty ; rdfs:domain :Copy ; rdfs:range :LibraryBranch ; rdfs:label "located at branch" .
+
+:borrowedBy a owl:ObjectProperty ; rdfs:domain :Loan ; rdfs:range :Member ; rdfs:label "loan borrowed by" .
+
+:hasOutstandingLoan a owl:ObjectProperty ; rdfs:domain :Member ; rdfs:range :Loan ; rdfs:label "has outstanding loan" .
+
+:hasISBN a owl:ObjectProperty ; rdfs:domain :Book ; rdfs:range :ISBN ; rdfs:label "has ISBN" ; rdf:type owl:FunctionalProperty .
+
+:hasPublisher a owl:ObjectProperty ; rdfs:domain :Book ; rdfs:range :Publisher ; rdfs:label "has publisher" .
+
+:memberEmailNode a owl:ObjectProperty ; rdfs:domain :Person ; rdfs:range :EmailNode ; rdfs:label "email node for person" ; rdf:type owl:InverseFunctionalProperty .
+
+:reservedBy a owl:ObjectProperty ; rdfs:domain :Reservation ; rdfs:range :Member ; rdfs:label "reservation reserved by" .
+
+:inSeries a owl:ObjectProperty ; rdfs:domain :Book ; rdfs:range :Series ; rdfs:label "in series" .
+
+
+
+
+# DATATYPE PROPERTIES
+
+:title a owl:DatatypeProperty ; rdfs:domain :Book ; rdfs:range xsd:string ; rdfs:label "title" .
+
+:publicationYear a owl:DatatypeProperty ; rdfs:domain :Edition ; rdfs:range xsd:gYear ; rdfs:label "publication year" .
+
+:copyId a owl:DatatypeProperty ; rdfs:domain :Copy ; rdfs:range xsd:string ; rdfs:label "copy identifier" .
+
+:dueDate a owl:DatatypeProperty ; rdfs:domain :Loan ; rdfs:range xsd:date ; rdfs:label "due date" .
+
+:loanDate a owl:DatatypeProperty ; rdfs:domain :Loan ; rdfs:range xsd:date ; rdfs:label "loan date" .
+
+:memberSince a owl:DatatypeProperty ; rdfs:domain :Member ; rdfs:range xsd:date ; rdfs:label "member since" .
+
+:emailLiteral a owl:DatatypeProperty ; rdfs:domain :EmailNode ; rdfs:range xsd:string ; rdfs:label "email literal" .
+
+:isbnLiteral a owl:DatatypeProperty ; rdfs:domain :ISBN ; rdfs:range xsd:string ; rdfs:label "isbn literal" .
+
+:pages a owl:DatatypeProperty ; rdfs:domain :Book ; rdfs:range xsd:integer ; rdfs:label "number of pages" .
+
+
+
+
+
+# Small example resources/classes for testing ranges
+
+:MainBranch a :LibraryBranch ; rdfs:label "Main Library Branch" .
+:WestBranch a :LibraryBranch ; rdfs:label "West Side Branch" .
