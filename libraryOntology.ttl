@@ -1,0 +1,474 @@
+@prefix : <http://www.semanticweb.org/akam/ontologies/2025/10/untitled-ontology-10/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/akam/ontologies/2025/10/untitled-ontology-10/> .
+
+<https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl> rdf:type owl:Ontology ;
+                                                                                            rdfs:comment "An ontology for modeling library systems, books, and management processes." ;
+                                                                                            rdfs:label "Library / Book Management Ontology - Nahom Mesfin" .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#authoredBy
+:authoredBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Book ;
+            rdfs:range :Author ;
+            rdfs:label "authored by" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#borrowedBy
+:borrowedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Loan ;
+            rdfs:range :Member ;
+            rdfs:label "loan borrowed by" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#forBook
+:forBook rdf:type owl:ObjectProperty ;
+         rdfs:domain :Loan ;
+         rdfs:range :Book ;
+         rdfs:label "loan for book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#forCopy
+:forCopy rdf:type owl:ObjectProperty ;
+         rdfs:domain :Loan ;
+         rdfs:range :Copy ;
+         rdfs:label "loan for copy" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasCopy
+:hasCopy rdf:type owl:ObjectProperty ;
+         rdfs:domain :Book ;
+         rdfs:range :Copy ;
+         rdfs:label "has copy" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasISBN
+:hasISBN rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Book ;
+         rdfs:range :ISBN ;
+         rdfs:label "has ISBN" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasOutstandingLoan
+:hasOutstandingLoan rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Member ;
+                    rdfs:range :Loan ;
+                    rdfs:label "has outstanding loan" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasPublisher
+:hasPublisher rdf:type owl:ObjectProperty ;
+              rdfs:domain :Book ;
+              rdfs:range :Publisher ;
+              rdfs:label "has publisher" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#inSeries
+:inSeries rdf:type owl:ObjectProperty ;
+          rdfs:domain :Book ;
+          rdfs:range :Series ;
+          rdfs:label "in series" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#locatedAt
+:locatedAt rdf:type owl:ObjectProperty ;
+           rdfs:domain :Copy ;
+           rdfs:range :LibraryBranch ;
+           rdfs:label "located at branch" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#memberEmailNode
+:memberEmailNode rdf:type owl:ObjectProperty ,
+                          owl:InverseFunctionalProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range :EmailNode ;
+                 rdfs:label "email node for person" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#reservedBy
+:reservedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Reservation ;
+            rdfs:range :Member ;
+            rdfs:label "reservation reserved by" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#reviewedBook
+:reviewedBook rdf:type owl:ObjectProperty ;
+              rdfs:domain :Review ;
+              rdfs:range :Book ;
+              rdfs:label "reviewed book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#reviewedBy
+:reviewedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Review ;
+            rdfs:range :Member ;
+            rdfs:label "reviewed by" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#copyId
+:copyId rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Copy ;
+        rdfs:range xsd:string ;
+        rdfs:label "copy identifier" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#dueDate
+:dueDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Loan ;
+         rdfs:range xsd:date ;
+         rdfs:label "due date" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#emailLiteral
+:emailLiteral rdf:type owl:DatatypeProperty ;
+              rdfs:domain :EmailNode ;
+              rdfs:range xsd:string ;
+              rdfs:label "email literal" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#isbnLiteral
+:isbnLiteral rdf:type owl:DatatypeProperty ;
+             rdfs:domain :ISBN ;
+             rdfs:range xsd:string ;
+             rdfs:label "isbn literal" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#loanDate
+:loanDate rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Loan ;
+          rdfs:range xsd:date ;
+          rdfs:label "loan date" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#memberSince
+:memberSince rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Member ;
+             rdfs:range xsd:date ;
+             rdfs:label "member since" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#pages
+:pages rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Book ;
+       rdfs:range xsd:integer ;
+       rdfs:label "number of pages" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#publicationYear
+:publicationYear rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Edition ;
+                 rdfs:range xsd:gYear ;
+                 rdfs:label "publication year" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#reviewText
+:reviewText rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Review ;
+            rdfs:range xsd:string ;
+            rdfs:label "review text" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#title
+:title rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Book ;
+       rdfs:range xsd:string ;
+       rdfs:label "title" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#ActiveMember
+:ActiveMember rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Member
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hasOutstandingLoan ;
+                                                           owl:someValuesFrom :Loan
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:label "Member who currently has at least one outstanding loan" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Author
+:Author rdf:type owl:Class ;
+        rdfs:subClassOf :Person ;
+        rdfs:label "Author" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Book
+:Book rdf:type owl:Class ;
+      rdfs:label "Book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#BookCondition
+:BookCondition rdf:type owl:Class ;
+               rdfs:label "Book Condition" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#BookConditionEnum
+:BookConditionEnum rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( :Fair
+                                                     :Good
+                                                     :New
+                                                     :Poor
+                                                   )
+                                       ] ;
+                   rdfs:label "Enumeration of book condition values" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#ContentItem
+:ContentItem rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Book
+                                                 :Ebook
+                                                 :Review
+                                               )
+                                 ] .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Copy
+:Copy rdf:type owl:Class ;
+      rdfs:label "Copy" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Ebook
+:Ebook rdf:type owl:Class ;
+       rdfs:subClassOf :Book ;
+       rdfs:label "Ebook" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Edition
+:Edition rdf:type owl:Class ;
+         rdfs:label "Edition" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#EmailNode
+:EmailNode rdf:type owl:Class ;
+           rdfs:label "Email Node" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Format
+:Format rdf:type owl:Class ;
+        rdfs:label "Format" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Genre
+:Genre rdf:type owl:Class ;
+       rdfs:label "Genre" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#ISBN
+:ISBN rdf:type owl:Class ;
+      rdfs:label "ISBN" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Language
+:Language rdf:type owl:Class ;
+          rdfs:label "Language" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Librarian
+:Librarian rdf:type owl:Class ;
+           rdfs:subClassOf :Person ;
+           rdfs:label "Librarian" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#LibraryBranch
+:LibraryBranch rdf:type owl:Class ;
+               rdfs:label "Library Branch" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Loan
+:Loan rdf:type owl:Class ;
+      rdfs:label "Loan" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#MainBranchCopy
+:MainBranchCopy rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :locatedAt ;
+                                      owl:hasValue :MainBranch
+                                    ] ;
+                rdfs:label "Copy located at the Main Branch" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Member
+:Member rdf:type owl:Class ;
+        rdfs:subClassOf :Person ;
+        rdfs:label "Member" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#NonMember
+:NonMember rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:complementOf :Member
+                               ] ;
+           rdfs:label "Person who is not a library member" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Person
+:Person rdf:type owl:Class ;
+        rdfs:label "Person" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#PrintedBook
+:PrintedBook rdf:type owl:Class ;
+             rdfs:subClassOf :Book ;
+             rdfs:label "Printed Book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Publisher
+:Publisher rdf:type owl:Class ;
+           rdfs:label "Publisher" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Reservation
+:Reservation rdf:type owl:Class ;
+             rdfs:label "Reservation" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Resource
+:Resource rdf:type owl:Class ;
+          rdfs:label "Resource" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Review
+:Review rdf:type owl:Class ;
+        rdfs:label "Review" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Series
+:Series rdf:type owl:Class ;
+        rdfs:label "Series" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#SingleISBNBook
+:SingleISBNBook rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasISBN ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                rdfs:label "Book with exactly one ISBN" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#StaffRole
+:StaffRole rdf:type owl:Class ;
+           rdfs:label "Staff Role" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Author_Nahom
+:Author_Nahom rdf:type owl:NamedIndividual ,
+                       :Author ;
+              rdfs:label "Nahom Mesfin" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Book_AI
+:Book_AI rdf:type owl:NamedIndividual ,
+                  :Book ;
+         :authoredBy :Author_Nahom ;
+         rdfs:label "Introduction to AI" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Copy_AI_01
+:Copy_AI_01 rdf:type owl:NamedIndividual ,
+                     :Copy ;
+            :locatedAt :MainBranch ;
+            :copyId "AI-COPY-001" ;
+            rdfs:label "Copy 1 of AI Book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Fair
+:Fair rdf:type owl:NamedIndividual ,
+               :BookCondition ;
+      rdfs:label "Fair" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Good
+:Good rdf:type owl:NamedIndividual ,
+               :BookCondition ;
+      rdfs:label "Good" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Loan_AI_01
+:Loan_AI_01 rdf:type owl:NamedIndividual ,
+                     :Loan ;
+            :borrowedBy :Member_Malaki ;
+            :forBook :Book_AI ;
+            :forCopy :Copy_AI_01 ;
+            :dueDate "2025-01-24"^^xsd:date ;
+            :loanDate "2025-01-10"^^xsd:date ;
+            rdfs:label "Loan of AI Book to Malaki" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#MainBranch
+:MainBranch rdf:type owl:NamedIndividual ,
+                     :LibraryBranch ;
+            rdfs:label "Main Library Branch" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Member_Malaki
+:Member_Malaki rdf:type owl:NamedIndividual ,
+                        :Member ;
+               rdfs:label "Malaki Jose" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#New
+:New rdf:type owl:NamedIndividual ,
+              :BookCondition ;
+     rdfs:label "New" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Poor
+:Poor rdf:type owl:NamedIndividual ,
+               :BookCondition ;
+      rdfs:label "Poor" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#Reservation_AI_01
+:Reservation_AI_01 rdf:type owl:NamedIndividual ,
+                            :Reservation ;
+                   :forBook :Book_AI ;
+                   :reservedBy :Member_Malaki ;
+                   rdfs:label "Reservation for AI Book" .
+
+
+###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#WestBranch
+:WestBranch rdf:type owl:NamedIndividual ,
+                     :LibraryBranch ;
+            rdfs:label "West Side Branch" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
