@@ -67,6 +67,12 @@ xsd:gYear rdf:type rdfs:Datatype .
          rdfs:domain :Book ;
          rdfs:range :ISBN ;
          rdfs:label "has ISBN" .
+		 
+### https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasBorrowed
+:hasBorrowed a owl:ObjectProperty ;
+    rdfs:domain :Member ;
+    rdfs:range :Book ;
+    rdfs:label "has borrowed" .
 
 
 ###  https://raw.githubusercontent.com/nahom-mesfin/library-ontology/main/libraryOntology.owl#hasOutstandingLoan
