@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Library — Human view</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; max-width: 900px; margin: 28px auto; line-height:1.5; color:#222;}
+    h1,h2,h3 { color:#0b5394; }
+    .card { border:1px solid #ddd; padding:14px; border-radius:8px; margin:12px 0; background:#fbfbff;}
+    .meta { color:#666; font-size:0.95rem; margin-bottom:8px;}
+    dl { display:grid; grid-template-columns:120px 1fr; gap:6px 12px; }
+    dt { font-weight:600; color:#333; }
+    dd { margin:0; }
+    .small { font-size:0.9rem; color:#666; }
+  </style>
+</head>
+<body>
+  <h1>Library — Book Management </h1>
+  <p class="small">This page shows individuals from the library ontology (authors, books, members, copies, loans, reservations, reviews).</p>
+
+  <h2>Authors</h2>
+  <div class="card">
+    <h3>Nahom Mesfin</h3>
+    <p class="meta">Author</p>
+    <dl>
+      <dt>Email</dt><dd>nahom@example.com</dd>
+      <dt>Notable works</dt><dd>Introduction to AI</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Gabriella Nebyou</h3>
+    <p class="meta">Author</p>
+    <dl>
+      <dt>Notable works</dt><dd>Database Systems</dd>
+    </dl>
+  </div>
+
+  <h2>Books</h2>
+  <div class="card">
+    <h3>Introduction to AI</h3>
+    <p class="meta">Book — 320 pages</p>
+    <dl>
+      <dt>Author</dt><dd>Nahom Mesfin</dd>
+      <dt>ISBN</dt><dd>978-3-16-148410-0</dd>
+      <dt>Copies</dt><dd>Copy 1 — Main Library Branch</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Database Systems</h3>
+    <p class="meta">Book — 540 pages</p>
+    <dl>
+      <dt>Author</dt><dd>Gabriella Nebyou</dd>
+      <dt>ISBN</dt><dd>978-0-262-13472-9</dd>
+    </dl>
+  </div>
+
+  <h2>Copies</h2>
+  <div class="card">
+    <h3>AI Book — Copy 1</h3>
+    <p class="meta">Copy identifier: AI-COPY-001</p>
+    <dl>
+      <dt>Located at</dt><dd>Main Library Branch</dd>
+      <dt>Book</dt><dd>Introduction to AI</dd>
+    </dl>
+  </div>
+
+  <h2>Members</h2>
+  <div class="card">
+    <h3>Malaki Jose</h3>
+    <p class="meta">Member since 2023-09-01</p>
+    <dl>
+      <dt>Email</dt><dd>malaki@example.com</dd>
+      <dt>Active loans</dt><dd>Loan of "Introduction to AI" (loan date 2025-01-10, due 2025-01-24)</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Eden Tesfaye</h3>
+    <p class="meta">Member since 2024-02-12</p>
+    <dl>
+      <dt>Email</dt><dd>eden@example.com</dd>
+      <dt>Reservations</dt><dd>Reservation for "Introduction to AI"</dd>
+    </dl>
+  </div>
+
+  <h2>Loans & Reservations</h2>
+  <div class="card">
+    <h3>Loan of "Introduction to AI"</h3>
+    <p class="meta">Borrowed by Malaki Jose — loan date 2025-01-10 — due 2025-01-24</p>
+  </div>
+
+  <div class="card">
+    <h3>Reservation for "Introduction to AI"</h3>
+    <p class="meta">Reserved by Eden Tesfaye</p>
+  </div>
+
+  <h2>Reviews</h2>
+  <div class="card">
+    <h3>AI Book Review</h3>
+    <p class="meta">By Malaki Jose</p>
+    <p>"Very useful for beginners."</p>
+  </div>
+
+  <footer style="margin-top:28px;color:#666;font-size:0.9rem">
+    <p>Data shown here come from the library individuals file (Task f3). For machine-readable RDFa/XHTML, see <a href="./library-rdfa.xhtml">library-rdfa.xhtml</a>.</p>
+  </footer>
+</body>
+</html>
