@@ -10,6 +10,8 @@
 
 <https://nahom-mesfin.github.io/library-ontology/individuals.ttl> rdf:type owl:Ontology .
 
+
+
 #################################################################
 #    Datatypes
 #################################################################
@@ -30,8 +32,16 @@ lib:authoredBy rdf:type owl:ObjectProperty .
 lib:borrowedBy rdf:type owl:ObjectProperty .
 
 
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#differentFrom
+lib:differentFrom rdf:type owl:ObjectProperty .
+
+
 ###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#forBook
 lib:forBook rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#hasBorrowed
+lib:hasBorrowed rdf:type owl:ObjectProperty .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#hasISBN
@@ -161,7 +171,8 @@ ind:Book_AI rdf:type owl:NamedIndividual ,
             lib:authoredBy ind:Author_Nahom ;
             lib:hasISBN ind:ISBN_AI ;
             lib:pages 320 ;
-            rdfs:label "Introduction to AI" .
+            rdfs:label "Introduction to AI" ;
+            lib:differentFrom ind:Book_Databases .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Book_Databases
@@ -236,7 +247,10 @@ ind:Member_Eden rdf:type owl:NamedIndividual ,
                          lib:Member ;
                 lib:memberEmailNode ind:EdenEmailNode ;
                 lib:memberSince "2024-02-12"^^xsd:date ;
-                rdfs:label "Eden Tesfaye" .
+                rdfs:label "Eden Tesfaye" ;
+                lib:differentFrom ind:Member_Malaki ;
+                lib:hasBorrowed ind:Book_AI ,
+                                ind:Book_Databases .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Member_Malaki
@@ -244,7 +258,10 @@ ind:Member_Malaki rdf:type owl:NamedIndividual ,
                            lib:Member ;
                   lib:memberEmailNode ind:MalakiEmailNode ;
                   lib:memberSince "2023-09-01"^^xsd:date ;
-                  rdfs:label "Malaki Jose" .
+                  rdfs:label "Malaki Jose" ;
+                  lib:differentFrom ind:Member_Eden ;
+                  lib:hasBorrowed ind:Book_AI ,
+                                  ind:Book_Databases .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#NahomEmailNode
