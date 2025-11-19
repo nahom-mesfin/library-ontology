@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:lib="https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#"
+      xmlns:ind="https://nahom-mesfin.github.io/library-ontology/individuals.ttl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xml:lang="en">
+
+<head>
+  <title>Library Knowledge Base — RDFa</title>
+  <meta charset="UTF-8"/>
+</head>
+
+<body>
+
+  <h1>Library Knowledge Base — RDFa View</h1>
+
+  <!-- ===== BOOKS SECTION ===== -->
+  <h2>Books</h2>
+
+  <div typeof="lib:Book" about="ind:Book_AI">
+    <h3>Book: <span property="rdfs:label">Introduction to AI</span></h3>
+    <p><strong>Author:</strong> 
+      <span rel="lib:authoredBy" resource="ind:Author_Nahom">
+        <span property="rdfs:label">Nahom Mesfin</span>
+      </span>
+    </p>
+    <p><strong>ISBN:</strong> 
+      <span rel="lib:hasISBN" resource="ind:ISBN_AI">
+        <span property="lib:isbnLiteral">978-3-16-148410-0</span>
+      </span>
+    </p>
+    <p><strong>Pages:</strong> <span property="lib:pages" datatype="xsd:integer">320</span></p>
+  </div>
+
+  <div typeof="lib:Book" about="ind:Book_Databases">
+    <h3>Book: <span property="rdfs:label">Database Systems</span></h3>
+    <p><strong>Author:</strong> 
+      <span rel="lib:authoredBy" resource="ind:Author_Gabriella">
+        <span property="rdfs:label">Gabriella Nebyou</span>
+      </span>
+    </p>
+    <p><strong>ISBN:</strong> 
+      <span rel="lib:hasISBN" resource="ind:ISBN_DB">
+        <span property="lib:isbnLiteral">978-0-262-13472-9</span>
+      </span>
+    </p>
+    <p><strong>Pages:</strong> <span property="lib:pages" datatype="xsd:integer">540</span></p>
+  </div>
+
+  <!-- ===== MEMBERS SECTION ===== -->
+  <h2>Library Members</h2>
+
+  <div typeof="lib:Member" about="ind:Member_Malaki">
+    <h3>Member: <span property="rdfs:label">Malaki Jose</span></h3>
+    <p><strong>Member since:</strong> <span property="lib:memberSince" datatype="xsd:date">2023-09-01</span></p>
+    <p><strong>Email:</strong> 
+      <span rel="lib:memberEmailNode" resource="ind:MalakiEmailNode">
+        <span property="lib:emailLiteral">malaki@example.com</span>
+      </span>
+    </p>
+    
+    <h4>Currently Borrowed:</h4>
+    <ul>
+      <li>
+        <span rel="lib:hasBorrowed" resource="ind:Book_AI">
+          <span property="rdfs:label">Introduction to AI</span>
+        </span>
+      </li>
+      <li>
+        <span rel="lib:hasBorrowed" resource="ind:Book_Databases">
+          <span property="rdfs:label">Database Systems</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div typeof="lib:Member" about="ind:Member_Eden">
+    <h3>Member: <span property="rdfs:label">Eden Tesfaye</span></h3>
+    <p><strong>Member since:</strong> <span property="lib:memberSince" datatype="xsd:date">2024-02-12</span></p>
+    <p><strong>Email:</strong> 
+      <span rel="lib:memberEmailNode" resource="ind:EdenEmailNode">
+        <span property="lib:emailLiteral">eden@example.com</span>
+      </span>
+    </p>
+    
+    <h4>Currently Borrowed:</h4>
+    <ul>
+      <li>
+        <span rel="lib:hasBorrowed" resource="ind:Book_AI">
+          <span property="rdfs:label">Introduction to AI</span>
+        </span>
+      </li>
+      <li>
+        <span rel="lib:hasBorrowed" resource="ind:Book_Databases">
+          <span property="rdfs:label">Database Systems</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ===== LOANS SECTION ===== -->
+  <h2>Active Loans</h2>
+
+  <div typeof="lib:Loan" about="ind:Loan_AI_01">
+    <h3>Loan Record #1</h3>
+    <p><strong>Borrower:</strong> 
+      <span rel="lib:borrowedBy" resource="ind:Member_Malaki">
+        <span property="rdfs:label">Malaki Jose</span>
+      </span>
+    </p>
+    <p><strong>Book:</strong> 
+      <span rel="lib:forBook" resource="ind:Book_AI">
+        <span property="rdfs:label">Introduction to AI</span>
+      </span>
+    </p>
+    <p><strong>Loan Date:</strong> <span property="lib:loanDate" datatype="xsd:date">2025-01-10</span></p>
+    <p><strong>Due Date:</strong> <span property="lib:dueDate" datatype="xsd:date">2025-01-24</span></p>
+  </div>
+
+  <div typeof="lib:Loan" about="ind:Loan_Eden_AI">
+    <h3>Loan Record #2</h3>
+    <p><strong>Borrower:</strong> 
+      <span rel="lib:borrowedBy" resource="ind:Member_Eden">
+        <span property="rdfs:label">Eden Tesfaye</span>
+      </span>
+    </p>
+    <p><strong>Book:</strong> 
+      <span rel="lib:forBook" resource="ind:Book_AI">
+        <span property="rdfs:label">Introduction to AI</span>
+      </span>
+    </p>
+    <p><strong>Loan Date:</strong> <span property="lib:loanDate" datatype="xsd:date">2025-01-11</span></p>
+    <p><strong>Due Date:</strong> <span property="lib:dueDate" datatype="xsd:date">2025-01-25</span></p>
+  </div>
+
+  <!-- ===== REVIEWS SECTION ===== -->
+  <h2>Book Reviews</h2>
+
+  <div typeof="lib:Review" about="ind:Review_AI">
+    <h3>Review of "Introduction to AI"</h3>
+    <p><strong>Reviewed by:</strong> 
+      <span rel="lib:reviewedBy" resource="ind:Member_Malaki">
+        <span property="rdfs:label">Malaki Jose</span>
+      </span>
+    </p>
+    <p><strong>Book:</strong> 
+      <span rel="lib:reviewedBook" resource="ind:Book_AI">
+        <span property="rdfs:label">Introduction to AI</span>
+      </span>
+    </p>
+    <p><strong>Review:</strong> <span property="lib:reviewText">"Very useful for beginners."</span></p>
+  </div>
+
+  <!-- ===== LIBRARY BRANCH ===== -->
+  <div about="lib:MainBranch">
+    <h2>Library Location</h2>
+    <p><strong>Branch:</strong> Main Library Branch</p>
+    <p>This is the central library branch where all books are located.</p>
+  </div>
+
+</body>
+</html>
