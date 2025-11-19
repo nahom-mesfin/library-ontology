@@ -1,3 +1,4 @@
+@prefix : <https://nahom-mesfin.github.io/library-ontology/individuals.ttl#> .
 @prefix ind: <https://nahom-mesfin.github.io/library-ontology/individuals.ttl#> .
 @prefix lib: <https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -5,78 +6,9 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <https://nahom-mesfin.github.io/library-ontology/individuals.ttl> .
 
-[ rdf:type owl:Ontology
- ] .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#authoredBy
-lib:authoredBy rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#borrowedBy
-lib:borrowedBy rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#copyId
-lib:copyId rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#dueDate
-lib:dueDate rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#emailLiteral
-lib:emailLiteral rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#hasISBN
-lib:hasISBN rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#isbnLiteral
-lib:isbnLiteral rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#loanDate
-lib:loanDate rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#locatedAt
-lib:locatedAt rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#memberEmailNode
-lib:memberEmailNode rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#memberSince
-lib:memberSince rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#pages
-lib:pages rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reservedBy
-lib:reservedBy rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewText
-lib:reviewText rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewedBook
-lib:reviewedBook rdf:type owl:AnnotationProperty .
-
-
-###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewedBy
-lib:reviewedBy rdf:type owl:AnnotationProperty .
-
+<https://nahom-mesfin.github.io/library-ontology/individuals.ttl> rdf:type owl:Ontology .
 
 #################################################################
 #    Datatypes
@@ -84,6 +16,82 @@ lib:reviewedBy rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2001/XMLSchema#date
 xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#authoredBy
+lib:authoredBy rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#borrowedBy
+lib:borrowedBy rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#forBook
+lib:forBook rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#hasISBN
+lib:hasISBN rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#locatedAt
+lib:locatedAt rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#memberEmailNode
+lib:memberEmailNode rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reservedBy
+lib:reservedBy rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewedBook
+lib:reviewedBook rdf:type owl:ObjectProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewedBy
+lib:reviewedBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#copyId
+lib:copyId rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#dueDate
+lib:dueDate rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#emailLiteral
+lib:emailLiteral rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#isbnLiteral
+lib:isbnLiteral rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#loanDate
+lib:loanDate rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#memberSince
+lib:memberSince rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#pages
+lib:pages rdf:type owl:DatatypeProperty .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#reviewText
+lib:reviewText rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -143,40 +151,40 @@ ind:Author_Gabriella rdf:type owl:NamedIndividual ,
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Author_Nahom
 ind:Author_Nahom rdf:type owl:NamedIndividual ,
                           lib:Author ;
-                 rdfs:label "Nahom Mesfin" ;
-                 lib:memberEmailNode ind:NahomEmailNode .
+                 lib:memberEmailNode ind:NahomEmailNode ;
+                 rdfs:label "Nahom Mesfin" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Book_AI
 ind:Book_AI rdf:type owl:NamedIndividual ,
                      lib:Book ;
-            rdfs:label "Introduction to AI" ;
             lib:authoredBy ind:Author_Nahom ;
             lib:hasISBN ind:ISBN_AI ;
-            lib:pages 320 .
+            lib:pages 320 ;
+            rdfs:label "Introduction to AI" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Book_Databases
 ind:Book_Databases rdf:type owl:NamedIndividual ,
                             lib:Book ;
-                   rdfs:label "Database Systems" ;
                    lib:authoredBy ind:Author_Gabriella ;
                    lib:hasISBN ind:ISBN_DB ;
-                   lib:pages 540 .
+                   lib:pages 540 ;
+                   rdfs:label "Database Systems" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Copy_AI_01
 ind:Copy_AI_01 rdf:type owl:NamedIndividual ,
                         lib:Copy ;
-               rdfs:label "Copy 1 of AI Book" ;
+               lib:locatedAt lib:MainBranch ;
                lib:copyId "AI-COPY-001" ;
-               lib:locatedAt lib:MainBranch .
+               rdfs:label "Copy 1 of AI Book" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#EdenEmailNode
 ind:EdenEmailNode rdf:type owl:NamedIndividual ,
                            lib:EmailNode ;
-                  owl:deprecated "eden@ed.com" .
+                  lib:emailLiteral "eden@example.com" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#ISBN_AI
@@ -200,54 +208,69 @@ ind:Librarian_Alpha rdf:type owl:NamedIndividual ,
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Loan_AI_01
 ind:Loan_AI_01 rdf:type owl:NamedIndividual ,
                         lib:Loan ;
-               rdfs:label "Loan of AI Book to Malaki" ;
                lib:borrowedBy ind:Member_Malaki ;
+               lib:forBook ind:Book_AI ;
                lib:dueDate "2025-01-24"^^xsd:date ;
-               lib:loanDate "2025-01-10"^^xsd:date .
+               lib:loanDate "2025-01-10"^^xsd:date ;
+               rdfs:label "Loan of AI Book to Malaki" .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Loan_Eden_AI
+ind:Loan_Eden_AI rdf:type owl:NamedIndividual ,
+                          lib:Loan ;
+                 lib:borrowedBy ind:Member_Eden ;
+                 lib:forBook ind:Book_AI ;
+                 lib:dueDate "2025-01-25"^^xsd:date ;
+                 lib:loanDate "2025-01-11"^^xsd:date ;
+                 rdfs:label "Loan of AI Book to Eden" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#MalakiEmailNode
 ind:MalakiEmailNode rdf:type owl:NamedIndividual ,
                              lib:EmailNode ;
-                    lib:emailLiteral "malaki@mk.com" .
+                    lib:emailLiteral "malaki@example.com" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Member_Eden
 ind:Member_Eden rdf:type owl:NamedIndividual ,
                          lib:Member ;
-                rdfs:label "Eden Tesfaye" ;
                 lib:memberEmailNode ind:EdenEmailNode ;
-                lib:memberSince "2024-02-12"^^xsd:date .
+                lib:memberSince "2024-02-12"^^xsd:date ;
+                rdfs:label "Eden Tesfaye" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Member_Malaki
 ind:Member_Malaki rdf:type owl:NamedIndividual ,
                            lib:Member ;
-                  rdfs:label "Malaki Jose" ;
                   lib:memberEmailNode ind:MalakiEmailNode ;
-                  lib:memberSince "2023-09-01"^^xsd:date .
+                  lib:memberSince "2023-09-01"^^xsd:date ;
+                  rdfs:label "Malaki Jose" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#NahomEmailNode
 ind:NahomEmailNode rdf:type owl:NamedIndividual ,
                             lib:EmailNode ;
-                   lib:emailLiteral "nahom@nm.com" .
+                   lib:emailLiteral "nahom@example.com" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Reservation_AI_01
 ind:Reservation_AI_01 rdf:type owl:NamedIndividual ,
                                lib:Reservation ;
-                      rdfs:label "Reservation for AI Book" ;
-                      lib:reservedBy ind:Member_Eden .
+                      lib:reservedBy ind:Member_Eden ;
+                      rdfs:label "Reservation for AI Book" .
 
 
 ###  https://nahom-mesfin.github.io/library-ontology/individuals.ttl#Review_AI
 ind:Review_AI rdf:type owl:NamedIndividual ,
                        lib:Review ;
-              rdfs:label "AI Book Review" ;
-              lib:reviewText "Very useful for beginners." ;
               lib:reviewedBook ind:Book_AI ;
-              lib:reviewedBy ind:Member_Malaki .
+              lib:reviewedBy ind:Member_Malaki ;
+              lib:reviewText "Very useful for beginners." ;
+              rdfs:label "AI Book Review" .
+
+
+###  https://nahom-mesfin.github.io/library-ontology/libraryOntology.ttl#MainBranch
+lib:MainBranch rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
